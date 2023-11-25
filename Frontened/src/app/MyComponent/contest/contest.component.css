@@ -1,0 +1,242 @@
+
+.container {
+    background-color: #f5060ef7;
+	background-color: #fff;
+	border-radius: 15px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 900px;
+	/* max-width: 100%;*/
+	min-height: 540px;
+}
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}  
+
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border-radius: 10px;
+    border: 5px solid rgb(6, 194, 246);
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+}
+.Before-FS{
+    border-radius: 8px;
+    border: 2px solid rgb(2, 137, 94)
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    height:50px;
+    width:300px;
+  }
+  .button1 {
+    background-color: #10a2b5; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .button2{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    height: 40px;
+    width: 80px;
+  }
+  .button:hover {background-color: rgb(9, 171, 130)}
+  .button2:hover {background-color: rgb(9, 171, 130)}
+
+
+  /* date and time */
+  .pickers-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex: 1;
+    width: 400px;
+}
+
+.form-date-picker {
+    flex: 55%;
+}
+
+.form-time-picker {
+    flex: 45%;
+    margin-left: 16px;
+}
+.contestYear{
+    width:50px;
+}
+.contestMonth{
+    width:50px;
+    margin-left: 20px;
+}
+.contestDay{
+    width:50px;
+    margin-left: 20px;
+}
+.contestHour {
+    width:95px;
+}
+.contestMinute {
+    width:95px;
+    margin-left:15px;
+}
+.CreateContestInner{
+    width:400px;
+    margin-left: 28%;
+    min-height: 680px;
+    border-radius: 15px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+}
+.JoinContestInner{
+    width:80%;
+    margin-left:10%;
+    min-height: 270px;
+    border-radius: 15px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+}
+.prevContestInner{
+    width:80%;
+    margin-left:10%;
+    min-height: 270px;
+    border-radius: 15px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+}
+.inputs {
+    border-radius: 5px;
+    border:#9521c7 solid 2px;
+  }
+
+
+
+.downBtn:hover{
+   background-color: #ea0010;
+}
+
+h1{
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+#clockdiv{
+	font-family: sans-serif;
+	color: #fff;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 15px;
+}
+
+#clockdiv > div{
+	padding: 5px;
+	border-radius: 10px;
+	background: #009879;
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 5px;
+	border-radius: 10px;
+	background: #02765f;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+
+
+table {
+    text-align: left;
+    line-height: 40px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #ed1c40;
+    width: 60%;
+    margin: 40px auto;
+    border-radius: .25rem;
+  }
+  
+  thead tr:first-child {
+    background: #9f6ec0;
+    color: #fff;
+    border: none;
+  }
+  
+  th:first-child,
+  td:first-child {
+    padding: 0 15px 0 20px;
+  }
+  
+  th {
+    text-align:center;
+    font-weight: 500;
+    padding: 8px;
+  }
+  
+  thead tr:last-child th {
+    border-bottom: 3px solid #ddd;
+  }
+  
+  tbody tr:hover {
+    background-color: #f2f2f2;
+    cursor: default;
+  }
+  
+  tbody tr:last-child td {
+    border: none;
+  }
+  
+  tbody td {
+    text-align:center;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  td:last-child {
+    text-align: right;
+    padding-right: 10px;
+  }
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+

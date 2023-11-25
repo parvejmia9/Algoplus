@@ -1,0 +1,301 @@
+<body><div class="pad">
+</div>
+<div class="pad"></div>
+
+
+
+
+<div style="background:rgb(194, 241, 247);margin-left:18%;" class="container" id="container">
+
+    <button *ngIf="hideBackButton==false"  style= "margin-left:8px;margin-top:8px;border-radius: 12px;cursor:pointer" class="button1" (click)="clickBackBtn()">
+        <i class="fa-solid fa-left-long"></i>
+    </button>
+
+    <div class="CreateContestInner" style="background:rgb(202, 182, 246);"*ngIf="openCreateContest==true">
+        <div style="padding-top: 10px;"><h2 style=" font-family: 'Verdana';text-align: center;">Create New Contest</h2></div>
+        <div style="margin-left:22%">
+            <span>
+                <b>Your Contest ID : {{this.newContestID}}</b>
+            </span>
+        </div>
+        <div  style="margin-top:10px;margin-left:22%">
+            <input class="inputs" type="text" placeholder="Contest Name" id="contest name" [(ngModel)]="this.demoContest.contestName">
+        </div>
+
+        <div style="margin-top:5px;margin-left:22%">
+            <input class="inputs" type="text" placeholder="Contest Password" id="contest password" [(ngModel)]="this.demoContest.contestPassword">
+        </div>
+
+        <div style="margin-left:22%">
+            <p style="font-size:18px; font-family: 'Verdana';text-align: left;">Contest Start Date:</p>
+            <input class="inputs contestYear" type="text" placeholder="yyyy" id="contest year" [(ngModel)]="this.contestStartYear">
+            <input class="inputs contestMonth" type="text" placeholder="mm" id="contest month" [(ngModel)]="this.contestStartMonth">
+            <input class="inputs contestDay" type="text" placeholder="dd" id="contest day" [(ngModel)]="this.contestStartDay">
+        </div>
+
+        <div style="margin-left:22%">
+            <p style="font-size:18px; font-family: 'Verdana';text-align: left;">Contest Start Time:</p>
+            <input class="inputs contestHour" type="text" placeholder="hour " id="contest hour" [(ngModel)]="this.contestStartHour">
+            <input class="inputs contestMinute" type="text" placeholder="minute" id="contest minute" [(ngModel)]="this.contestStartMinute">
+        </div>
+        <div style="margin-top:5px;margin-left:22%">
+            <input class="inputs" type="text" placeholder="Contest Duration" id="contest password" [(ngModel)]="this.contestDuration">
+        </div>
+        <br>
+        <div style="font-size:20px; font-family: 'Verdana';text-align: center;">
+            <h3>Enter Problem Code</h3>
+        </div>
+        <div >
+
+            <div style="margin-left:10px">   
+            <input class="inputs contestHour" type="text" placeholder="Code1 " [(ngModel)]="this.problem[0]" (keyup)="onKey($event,0)">
+            <span style="margin-left: 10px;" #prob0 >{{this.labelproblem[0]}}</span>
+            </div>
+            
+            <div style=" margin-top:5px;margin-left:10px">   
+            <input class="inputs contestHour" type="text" placeholder="Code2 " #prob1 [(ngModel)]="this.problem[1]" (keyup)="onKey($event,1)">
+            <span style="margin-left: 10px;" #prob1 >{{this.labelproblem[1]}}</span>
+            </div>
+
+            <div style=" margin-top:5px;margin-left:10px">   
+                <input class="inputs contestHour" type="text" placeholder="Code3 " #prob2 [(ngModel)]="this.problem[2]" (keyup)="onKey($event,2)">
+                <span style="margin-left: 10px;" #prob2 >{{this.labelproblem[2]}}</span>
+            </div>
+
+            <div style=" margin-top:5px;margin-left:10px" >   
+                <input  class="inputs contestHour" type="text" placeholder="Code4 " #prob3  [(ngModel)]="this.problem[3]" (keyup)="onKey($event,3)">
+                <span style="margin-left: 10px;" #prob3  >{{this.labelproblem[3]}}</span>
+            </div>
+        </div>
+        <div style="margin-top:20px;margin-left:40%;">
+            <button style= "border-radius: 12px;cursor:pointer" class="button2" (click)="CreateNewContest()">Create</button>
+        </div>
+        
+
+    </div>
+   
+
+
+   <!-- for joining a contest  -->
+
+    <div class="JoinContestInner" *ngIf="openJoinContest==true" style="background:rgb(202, 182, 246);" >
+        <div *ngIf="joinInputinfo==true">
+            <div style="padding-top: 10px;"><h2 style=" font-family: 'Verdana';text-align: center;">Join a Contest</h2></div>
+
+            <div  style="margin-left:34.5%">
+                <input class="inputs" type="text" placeholder="Contest ID" id="contest name" [(ngModel)]="this.joinContestId">
+            </div>
+
+            <div style="margin-top:5px;margin-left:34.5%">
+                <input class="inputs" type="text" placeholder="Contest Password" id="contest password" [(ngModel)]="this.joinContestPassword">
+            </div>
+            <div style="margin-top:20px;margin-left:40%;">
+                <button style= "border-radius: 12px;cursor:pointer" class="button2" (click)="joinAcontest()">Join</button>
+            </div>
+        </div>
+
+        <div style="padding-bottom:10px" *ngIf="joinInputinfo==false">
+            <div>
+                <div style="padding-top:5px;margin-left:10px"><button style= "border-radius: 12px;cursor:pointer" class="button2" (click)="getAndSetData()"><i class="fa-solid fa-arrows-rotate"></i></button></div>
+                <h3 style="padding:5px;text-align:center">{{this.contestInfoArray[this.index].contestName}}</h3>
+                <p style="text-align: center;">{{this.clockHeader}}</p>
+                <div style="padding-left:32%" id="clockdiv">
+                    <div>
+                        <span class="days">{{this.remDays}}</span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div style="margin-left:5px">
+                        <span class="hours">{{this.remHours}}</span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div style="margin-left:5px">
+                        <span class="minutes">{{this.remMinutes}}</span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div style="margin-left:5px">
+                        <span class="seconds">{{this.remSeconds}}</span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <table >
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th >UserId</th>
+                    <th>Score</th>
+                    <th>Penalty</th>
+                    <th *ngIf="hasStarted==false">A</th>
+                    <th *ngIf="hasStarted==false">B</th>
+                    <th *ngIf="hasStarted==false">C</th>
+                    <th *ngIf="hasStarted==false">D</th>
+                    <th *ngIf="hasStarted==true">
+                        <a target="blank" href="{{this.problemLink[0]}}">A</a>
+                    </th>
+                    <th *ngIf="hasStarted==true">
+                        <a target="blank" href="{{this.problemLink[1]}}">B</a>
+                    </th>
+                    <th *ngIf="hasStarted==true">
+                        <a target="blank" href="{{this.problemLink[2]}}">C</a>
+                    </th>
+                    <th *ngIf="hasStarted==true">
+                        <a target="blank" href="{{this.problemLink[3]}}">D</a>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of this.obj let i=index;">
+                    <td *ngIf="i>0">{{i}}</td>
+                    <td *ngIf="i>0">{{user.c0.UserId}}</td>
+                    <td *ngIf="i>0">{{user.c0.solvecount}}</td>
+                    <td *ngIf="i>0">{{user.c0.totalPenalty}}</td>
+                    <td *ngIf="i>0 && user.c0.prob1.status==''">-</td>
+                    <td *ngIf="i>0 && user.c0.prob1.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob1.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob1.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob1.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob2.status==''">-</td>
+                    <td *ngIf="i>0 && user.c0.prob2.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob2.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob2.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob2.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob3.status==''">-</td>
+                    <td *ngIf="i>0 && user.c0.prob3.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob3.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob3.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob3.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob4.status==''">-</td>
+                    <td *ngIf="i>0 && user.c0.prob4.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob4.numberOfattempt}}</td>
+                    <td *ngIf="i>0 && user.c0.prob4.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob4.numberOfattempt}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        
+
+    </div>
+
+    <!-- for showing previous contests -->
+
+    <div class="prevContestInner" *ngIf="openPrevContest==true" style="background:rgb(202, 182, 246);">
+        <div style="padding-top:20px"></div>
+        <h2 style="text-align: center;">Previous Contests</h2>
+        <table style="margin-bottom:10px">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Contest ID</th>
+                    <th>Contest Name</th>
+                    <th>Show</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contest of this.endedContestInfoArray; let i=index;">
+                    
+                    <ng-template  #content let-modal>
+                        <div style="text-align: center;"  class="modal-header">
+                            <h4  class="modal-title"id="modal-basic-title">
+                                {{this.contestInfoArray[index].contestName}}
+                            </h4>
+                            <button style="cursor:pointer;border-radius: 5px;" type="button" class="close"aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
+                        </div>
+                        <div>
+                            <table >
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th >UserId</th>
+                                    <th>Score</th>
+                                    <th>Penalty</th>
+                                    <th >
+                                        <a target="blank" href="{{this.problemLink[0]}}">A</a>
+                                    </th>
+                                    <th >
+                                        <a target="blank" href="{{this.problemLink[1]}}">B</a>
+                                    </th>
+                                    <th >
+                                        <a target="blank" href="{{this.problemLink[2]}}">C</a>
+                                    </th>
+                                    <th >
+                                        <a target="blank" href="{{this.problemLink[3]}}">D</a>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let user of this.obj let i=index;">
+                                    <td *ngIf="i>0">{{i}}</td>
+                                    <td *ngIf="i>0">{{user.c0.UserId}}</td>
+                                    <td *ngIf="i>0">{{user.c0.solvecount}}</td>
+                                    <td *ngIf="i>0">{{user.c0.totalPenalty}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob1.status==''">-</td>
+                                    <td *ngIf="i>0 && user.c0.prob1.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob1.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob1.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob1.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob2.status==''">-</td>
+                                    <td *ngIf="i>0 && user.c0.prob2.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob2.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob2.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob2.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob3.status==''">-</td>
+                                    <td *ngIf="i>0 && user.c0.prob3.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob3.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob3.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob3.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob4.status==''">-</td>
+                                    <td *ngIf="i>0 && user.c0.prob4.status=='AC'" style="background-color:rgb(27, 219, 107)">+{{user.c0.prob4.numberOfattempt}}</td>
+                                    <td *ngIf="i>0 && user.c0.prob4.status=='WA'" style="background-color:rgb(228, 51, 66)">-{{user.c0.prob4.numberOfattempt}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </ng-template>
+                    <td>{{i+1}}</td>
+                    <td>{{contest.contestId}}</td>
+                    <td>{{contest.contestName}}</td>
+                    <td>
+                      <button  style="background-color:rgb(191, 127, 255);cursor:pointer"(click)="open(content,contest.contestId)">
+                        <i class="fa-solid fa-arrow-down"></i>
+                      </button>
+                    </td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        <div style="padding-bottom:25px"></div>
+    </div>
+
+
+
+
+    <!-- Join a Contest -->
+
+    <div *ngIf="openJoinContest==true">
+        
+    </div>
+    
+
+
+
+
+    <div style="margin-left:32%;margin-top:170px">
+        <button *ngIf="hideJoinContest==false"  style= "border-radius: 12px;cursor:pointer" class="button" (click)="clickJoinContest()">Join a Contest</button>
+    </div>
+
+
+    <!-- for create contest -->
+
+    
+    
+    <div style="margin-left:32%;margin-top:15px">
+        <button *ngIf="hideCreateContest==false"  style= "border-radius: 12px;cursor:pointer" class="button" (click)="clickCreateContest()">Create a Contest</button>
+        
+
+    </div>
+    
+	<!-- previous Contests -->
+    <div>
+
+    </div>
+
+    <div style="margin-left:32%;margin-top:15px">
+        <button *ngIf="hidePrevContest==false"  style= "border-radius: 12px;cursor:pointer" class="button" (click)="clickPrevContest()">Previous Contests</button>
+        
+    </div>
+    
+</div>

@@ -1,0 +1,65 @@
+<!-- Account -->
+
+<div class="pad">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- partial:index.partial.html -->
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+                <h1>Hello There</h1>
+            </div>
+        </div>
+        <div *ngIf="this.page==0">
+            <div class="right">
+                <h2>Login</h2>
+                <div class="inputs">
+                    <input type="text" placeholder="user name" id="user name" [(ngModel)]="this.demoUser.user_name">
+                    <br>
+                    <input type="password" placeholder="password" [(ngModel)]="this.demoUser.user_password">
+                </div>
+    
+                <br><br>
+                <br>
+                <button style="margin-right:30%;cursor: pointer;" (click)="login_fn()">Login</button>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <p>Don't have an account? <a class="createAccount" (click)="createAccount()">Creat Your Account</a> it takes less than a minute</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="this.page ==1">
+            <div class="right">
+                <h2>Register</h2>
+                <div class="inputs">
+                    <input type="text" placeholder="User Name" [(ngModel)]="this.demoUser.user_name">
+                    <br>
+                    <input type="email" placeholder="Email" [(ngModel)]="this.demoUser.user_email">
+                    <br>
+                    <input type="password" placeholder="Password" [(ngModel)]="this.demoUser.user_password">
+                    <br>
+                    <input type="text" placeholder="Institution" [(ngModel)]="this.demoUser.user_institution" >
+                    <br>
+                    <input type="text" placeholder="Full Name" [(ngModel)]="this.demoUser.user_full_name">
+                </div>
+    
+                <br><br>
+                <br>
+                <div>
+                    <button style="margin-right:30%; cursor: pointer;" (click)="register_fn()">Register</button>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <p>Already have an account? <a class="createAccount" (click)="createAccount()">Login page</a> it takes less than a minute</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

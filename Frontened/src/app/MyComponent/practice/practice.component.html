@@ -1,0 +1,41 @@
+
+<div class="pad">
+    <div class="maindiv">
+        <div class="inputs">
+          <div class="Fields">
+            <div class="Fieldset">
+              <h3 class="Fs-H"><span>Enter Handle: </span></h3>
+              <input type="text" class="Before-FS" required="" autocomplete="off" [(ngModel)]="handle" >
+              
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center"><button style= "border-radius: 12px;cursor:pointer" class="button" (click)="submit()">Submit</button></div>
+      </div>
+      <div *ngIf="isOk==1">
+        <h3 style="text-align: center;">{{lis[0].rank}}: <span style="color: {{this.clor}}">{{lis[0].handle}} </span></h3>
+        <h3 style="text-align: center;" >{{lis[0].firstName}} {{lis[0].lastName}}</h3>
+        <h3 style="text-align: center;">Max Rating = {{lis[0].maxRating}}</h3>
+        <h3 style="text-align: center;"> Current Rating = {{lis[0].rating}}</h3>
+      </div>
+      
+</div>
+<div *ngIf="isOk==1">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Problem Name</th>
+        <th>Problem Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of problems;let i=index;">
+        <td>{{i+1}}</td>
+        <td style="text-align: left;"><a href={{user[0]}} target="blank">{{user[1]}}</a></td>
+        <td style="Text-align:left">{{user[2]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

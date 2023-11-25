@@ -1,0 +1,92 @@
+<div class="pad"></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h2 *ngIf="this.cl%2==0" style="text-align: center;">Most Recent Blogs</h2>
+<h2 *ngIf="this.cl%2==1" style="text-align: center;">Most Populer Blogs</h2>
+<div style="margin-left:48%; padding:10px" class="checkbox-wrapper-3">
+    <input type="checkbox" id="cbx-3"/>
+    <label for="cbx-3" class="toggle" (click)="this.manageSorting()"><span></span></label>
+  </div>
+  
+  <style>
+    .checkbox-wrapper-3 input[type="checkbox"] {
+      visibility: hidden;
+      display: none;
+    }
+  
+    .checkbox-wrapper-3 .toggle {
+      position: relative;
+      display: block;
+      width: 40px;
+      height: 20px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transform: translate3d(0, 0, 0);
+    }
+    .checkbox-wrapper-3 .toggle:before {
+      content: "";
+      position: relative;
+      top: 3px;
+      left: 3px;
+      width: 34px;
+      height: 14px;
+      display: block;
+      background: #9A9999;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .checkbox-wrapper-3 .toggle span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      display: block;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(154, 153, 153, 0.5);
+      transition: all 0.2s ease;
+    }
+    .checkbox-wrapper-3 .toggle span:before {
+      content: "";
+      position: absolute;
+      display: block;
+      margin: -18px;
+      width: 56px;
+      height: 56px;
+      background: rgba(79, 46, 220, 0.5);
+      border-radius: 50%;
+      transform: scale(0);
+      opacity: 1;
+      pointer-events: none;
+    }
+  
+    .checkbox-wrapper-3 #cbx-3:checked + .toggle:before {
+      background: #947ADA;
+    }
+    .checkbox-wrapper-3 #cbx-3:checked + .toggle span {
+      background: #4F2EDC;
+      transform: translateX(20px);
+      transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+      box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2);
+    }
+    .checkbox-wrapper-3 #cbx-3:checked + .toggle span:before {
+      transform: scale(1);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+  </style>
+
+<div class="card text-white mb-3" style=" border-radius:10px;width: 80%;margin-left:10%; background-color:hsl(210 30% 24%);;" *ngFor="let blogs of unsorteduserBlogInfoArray;let i=index;">
+  <div class="card-body">
+    <p style="font-size:30px"> <b>{{blogs.user_name}}</b> &nbsp;
+      <i *ngIf="this.cookieService.get('isAdmin')=='1'" class="fa-solid fa-trash"  style="cursor:pointer;" (click)="deleteblog(blogs)"></i></p>
+      <div><p style="font-size:18px">{{blogs.blog_content}}</p></div>
+      
+      <p style="text-align: center;">
+          <!-- <button style= "border-radius: 5px;cursor:pointer" class="button" (click)="likefunction(blogs)">like</button> -->
+          <i style="cursor:pointer;" class="fa-solid fa-thumbs-up" (click)="likefunction(blogs)" ></i>
+          &nbsp;<b style="font-size:16px;">{{blogs.like_count}}</b> 
+      </p>
+  </div>
+</div>

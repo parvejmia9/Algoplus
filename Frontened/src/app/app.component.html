@@ -1,0 +1,48 @@
+<head>
+      
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="header">
+  <div  class="header__icons" >
+    <div  class="header__icon" (click)="pageChange(0)">
+      <span class="material-icons"> home </span>
+      <p>AlgoPlus</p>
+    </div>
+
+    <div class="header__icon" (click)="pageChange(1)">
+      <span class="material-icons"> <i class="fa-solid fa-code"></i> </span>
+      <p>Learn</p>
+    </div>
+
+    <div class="header__icon" (click)="pageChange(2)">
+      <span class="material-icons"><i class="fa-solid fa-puzzle-piece"></i>  </span>
+      <p>Practice</p>
+    </div>
+
+    <div class="header__icon" (click)="pageChange(3)">
+      <span class="material-icons"> <i class="fa-solid fa-computer"></i> </span>
+      <p>Contest</p>
+    </div>
+
+    <div *ngIf="this.isAdmin==true" class="header__icon" (click)="pageChange(6)">
+      <span class="material-icons"> <i class="fa-solid fa-briefcase"></i> </span>
+      <p>Manage</p>
+    </div>
+
+    <div class="header__icon" style = "position:absolute; right: 20px;"  (click)="pageChange(4)">
+      <span class="material-icons"> person_outline </span>
+      <p *ngIf="this.cookieService.get('user_name')!=''">{{this.cookieService.get('user_name')}}</p>
+      <p *ngIf="this.cookieService.get('user_name')==''">Sing In</p>
+    </div>
+  </div>
+</div>
+</body>
+<app-login *ngIf="isPageOne==4" (loginSuccess)="LoginUser($event)"></app-login>
+<app-profile *ngIf="isPageOne==5"  [loginInfoForProfile] = "this.loginInfo" (BlogSuccess)="Blog($event)" (logoutSuccess)="LogOutUser($event)"></app-profile>
+<app-home *ngIf="isPageOne==0" ></app-home>
+<app-practice *ngIf="isPageOne==2"></app-practice>
+<app-contest *ngIf="isPageOne==3"></app-contest>
+<app-manage *ngIf="isPageOne==6"></app-manage>
+<app-blog *ngIf="isPageOne==1" [BlogInfoForBlog] = "this.blogInfo"></app-blog>

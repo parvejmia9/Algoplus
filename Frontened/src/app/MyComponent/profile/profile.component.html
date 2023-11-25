@@ -1,0 +1,133 @@
+<div class="pad"></div>
+
+<!-- add blog -->
+
+
+<ng-template  #content let-modal>
+    <div style="text-align: center;"  class="modal-header">
+        <h4  class="modal-title"id="modal-basic-title">
+            Create Blog
+        </h4>
+        <button style="cursor:pointer;border-radius: 5px;" type="button" class="close"aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+        </button>
+    </div>
+    <div>
+        <div>
+            <div class="maindiv">
+                <div class="inputs">
+                  <div class="Fields">
+                    <div class="Fieldset">
+                      <textarea name="textarea" style="width:80%;height:150px;margin-left:10%" [(ngModel)]="this.demoBlog.blog_content"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div style="text-align: center">
+                    <button style="border-radius: 12px;cursor:pointer" class="button" (click)="createBlog()" (click)="modal.dismiss('Cross click')">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template  #content1 let-modal>
+    <div style="text-align: center;"  class="modal-header">
+        <h4  class="modal-title"id="modal-basic-title">
+            Update Your Profile Information
+        </h4>
+        <button style="cursor:pointer;border-radius: 5px;" type="button" class="close"aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+        </button>
+    </div>
+    <div>
+        <label>Full Name</label>
+        <input type="text" class="Before-FS" required="" [(ngModel)]="this.demoUser.user_full_name">
+        
+        <label>Institution</label>
+        <input type="text" class="Before-FS" required="" [(ngModel)]="this.demoUser.user_institution">
+        
+        <label>Email</label>
+        <input type="text" class="Before-FS" required="" [(ngModel)]="this.demoUser.user_email">
+        
+        <label>Codeforces Handle</label>
+        <input type="text" class="Before-FS" required="" [(ngModel)]="this.demoUser.user_cf_handle">
+        
+        <label>Password</label>
+        <input type="text" class="Before-FS" placeholder="Enter Password" [(ngModel)]="this.checkPass">
+
+        <button style="border-radius: 12px;cursor:pointer; margin-left: 40%;" class="button" (click)="updateProfile()" (click)="modal.dismiss('Cross click')">Update</button>
+    </div>
+</ng-template>
+
+
+<div *ngIf="this.button==0">
+    <h1><p style="text-align:center">User Profile</p></h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th width="40%">User Name</th>
+                <th>{{demoUser.user_name}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td width="40%">Full Name</td>
+                <td>{{demoUser.user_full_name}}</td>
+            </tr>
+            <tr>
+                <td width="40%">Institution</td>
+                <td>{{demoUser.user_institution}}</td>
+                
+            </tr>
+            <tr>
+                <td width="40%">Email</td>
+                <td>{{demoUser.user_email}}</td>
+                
+            </tr>
+            <tr>
+                <td width="40%">Codeforeces Handle</td>
+                <td *ngIf="demoUser.user_cf_handle!=''">{{demoUser.user_cf_handle}}</td>
+                <td *ngIf="demoUser.user_cf_handle==''">Not Provided</td>
+                
+            </tr>
+            <!-- and so on... -->
+        </tbody>
+    </table>
+    <div style="text-align: center; padding-top: 10px;">
+        <button style="border-radius: 12px;cursor:pointer" class="button" (click)="open(content1)">Update Info</button>
+    </div>
+    <div style="text-align: center; padding-top: 10px;">
+        <button style="border-radius: 12px;cursor:pointer" class="button" (click)="open(content)">Add New Blog</button>
+    </div>
+    <div style="text-align: center; padding-top: 10px;">
+        <button style="border-radius: 12px;cursor:pointer" class="button1" (click)="button_action2()">LogOut</button>
+    </div>
+</div>
+
+<!-- <div *ngIf="this.button==1">
+    <h1><p style="text-align:center">Create Blog</p></h1>
+    <div>
+        <div class="maindiv">
+            <div class="inputs">
+              <div class="Fields">
+                <div class="Fieldset">
+                  <textarea name="textarea" style="width:80%;height:150px;margin-left:10%" [(ngModel)]="this.demoBlog.blog_content"></textarea>
+                </div>
+              </div>
+            </div>
+            <div style="text-align: center">
+                <button style="border-radius: 12px;cursor:pointer" class="button" (click)="button_action()">Cancel</button>
+                &nbsp;
+                <button style="border-radius: 12px;cursor:pointer" class="button" (click)="createBlog()">Submit</button>
+            </div>
+        </div>
+    </div>
+    
+</div> -->
+ 
+

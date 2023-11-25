@@ -1,0 +1,25 @@
+<body><div class="pad"></div>
+<div>
+    <h1><p style="text-align:center">List of All Users</p></h1>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Codeforces Handle</th>
+                <th>Ban User</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userLoginInfoArray;let i=index;">
+                <td>{{i+1}}</td>
+                <td style="text-align: left;">{{user.user_name}}</td>
+                <td style="text-align: left;">{{user.user_email}}</td>
+                <td *ngIf="user.user_cf_handle!=''" style="text-align: left;">{{user.user_cf_handle}}</td>
+                <td *ngIf="user.user_cf_handle==''" style="text-align: left;">Not Provided</td>
+                <td style="text-align: center;"><i class="fa-solid fa-ban"style="cursor:pointer;" (click)="deleteUser(user)"></i></td>
+              </tr>
+        </tbody>
+    </table>
+</div>
